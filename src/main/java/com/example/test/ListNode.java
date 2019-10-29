@@ -1,10 +1,10 @@
 package com.example.test;
 
-public class LinkListCURD {
+public class ListNode {
     private int size;//链表节点的个数
     private Node head;//头节点
 
-    public LinkListCURD(){
+    public ListNode(){
         size = 0;
         head = null;
     }

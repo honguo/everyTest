@@ -1,12 +1,14 @@
 package com.example.test;
 
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-public class LinkListCURDTest {
+@SpringBootTest
+public class ListNodeTest {
 
     @Test
     public void addHead() {
-        LinkListCURD singleList = new LinkListCURD();
+        ListNode singleList = new ListNode();
         singleList.addHead("A");
         singleList.addHead("B");
         singleList.addHead("C");
