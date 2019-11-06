@@ -6,41 +6,51 @@ import java.util.*;
 
 public class BigFileScanner {
 
-    public List<String> extractLines(String filePath, int n){
-        Random ran=new Random();
-        List<String> re =null ;
-        Set<Integer> set=new TreeSet<>();
-        set.add(ran.nextInt(100)+1);
-        while (set.size() < n){
-            set.add(ran.nextInt(100)+1);
-        }
-        //todo 在这里填充代码
-        for (int i=0 ;i<n;i++){
-            re.add(getText(filePath, set[i]));
-        }
-        return re;
+    public static void main(String[] args){
+
+        List<String> re = extractLines("/Users/yp-tc-m-4820/Desktop/code.txt",3);
+        System.out.println(re);
     }
 
-    public String getText(String filePath,int n) throws IOException {
+    public static List<String> extractLines(String filePath, int n){
+        Random ran=new Random();
+        List<String> result =new ArrayList<>() ;
+        Set<Integer> set=new TreeSet<>();
+        set.add(ran.nextInt(Integer.MAX_VALUE)+1);
+        while (set.size() < n){
+            set.add(ran.nextInt(Integer.MAX_VALUE)+1);
+        }
+        int i=1;
         FileInputStream inputStream = null;
         Scanner sc = null;
         try {
             inputStream = new FileInputStream(filePath);
             sc = new Scanner(inputStream, "UTF-8");
             while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-                // System.out.println(line);
+                String line = "";
+                line = sc.nextLine();
+                if(set.contains(i)){
+                    result.add(line);
+                }
+                i++;
             }
         }catch(IOException e){
-//            logger.error(e);
+            System.out.println(e);
         }finally {
             if (inputStream != null) {
-                inputStream.close();
+                try {
+                    inputStream.close();
+                }catch (Exception e){
+                    System.out.println(e);
+                }
             }
             if (sc != null) {
                 sc.close();
             }
         }
+        return result;
     }
+
+
 
 }
