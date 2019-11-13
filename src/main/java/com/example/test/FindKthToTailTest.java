@@ -9,30 +9,31 @@ public class FindKthToTailTest {
         ListNode b = new ListNode(3);
         a.next = b;
         System.out.println(ReverseList(a).val);
+
     }
 
-//    public static ListNode FindKthToTail(ListNode head,int k) {
-//        if(head == null){
-//            return null;
-//        }
-//
-//        ListNode a = head;
-//        ListNode b = head;
-//        int count = 0;
-//        while (a != null){
-//            a = a.next;
-//            count++;
-//        }
-//        if(count<k){
-//            return null;
-//        }
-//        for (int i = 0;i<count-k;i++){
-//            b=b.next;
-//        }
-//        return b;
-//    }
+    private static ListNode FindKthToTail(ListNode head,int k) {
+        if(head == null){
+            return null;
+        }
 
-    public static ListNode ReverseList(ListNode head) {
+        ListNode a = head;
+        ListNode b = head;
+        int count = 0;
+        while (a != null){
+            a = a.next;
+            count++;
+        }
+        if(count<k){
+            return null;
+        }
+        for (int i = 0;i<count-k;i++){
+            b=b.next;
+        }
+        return b;
+    }
+
+    private static ListNode ReverseList(ListNode head) {
 //        if(head ==  null){
 //            return  null;
 //        }

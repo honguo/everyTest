@@ -9,17 +9,20 @@ public class BigFileScanner {
     public static void main(String[] args){
 
         List<String> re = extractLines("/Users/yp-tc-m-4820/Desktop/code.txt",3);
+
+//        LinkedList<String> re =new LinkedList<>() ;
+//        re.add("a");
+//        re.add("b");
+//        re.add("c");
+//        re.remove(0);
+//        re.poll();
+//        re.add("d");
         System.out.println(re);
+
     }
 
     public static List<String> extractLines(String filePath, int n){
-        Random ran=new Random();
-        List<String> result =new ArrayList<>() ;
-        Set<Integer> set=new TreeSet<>();
-        set.add(ran.nextInt(Integer.MAX_VALUE)+1);
-        while (set.size() < n){
-            set.add(ran.nextInt(Integer.MAX_VALUE)+1);
-        }
+        LinkedList<String> result =new LinkedList<>() ;
         int i=1;
         FileInputStream inputStream = null;
         Scanner sc = null;
@@ -29,8 +32,15 @@ public class BigFileScanner {
             while (sc.hasNextLine()) {
                 String line = "";
                 line = sc.nextLine();
-                if(set.contains(i)){
+                if(i<=n){
                     result.add(line);
+                }else {
+                    int r = new Random().nextInt(i);
+                    if(r<n){
+//                        result.remove(0);
+                        result.poll();
+                        result.add(line);
+                    }
                 }
                 i++;
             }
