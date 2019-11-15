@@ -8,21 +8,23 @@ public class BigFileScanner {
 
     public static void main(String[] args){
 
-        List<String> re = extractLines("/Users/yp-tc-m-4820/Desktop/code.txt",3);
-
-//        LinkedList<String> re =new LinkedList<>() ;
+        List<String> re = extractLines("/Users/yp-tc-m-4820/Desktop/code.txt",2);
+//
+//        List<String> re =new ArrayList<>() ;
+//        int r = new Random().nextInt(3);
+//
 //        re.add("a");
 //        re.add("b");
 //        re.add("c");
-//        re.remove(0);
-//        re.poll();
+//        re.remove(r);
+////        re.poll();
 //        re.add("d");
         System.out.println(re);
 
     }
 
     public static List<String> extractLines(String filePath, int n){
-        LinkedList<String> result =new LinkedList<>() ;
+        List<String> result =new ArrayList<>() ;
         int i=1;
         FileInputStream inputStream = null;
         Scanner sc = null;
@@ -37,8 +39,7 @@ public class BigFileScanner {
                 }else {
                     int r = new Random().nextInt(i);
                     if(r<n){
-//                        result.remove(0);
-                        result.poll();
+                        result.remove(r);
                         result.add(line);
                     }
                 }
