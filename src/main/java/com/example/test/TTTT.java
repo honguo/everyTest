@@ -385,13 +385,14 @@ public class TTTT {
 
         HessianProxyFactory proxyFactory = new HessianProxyFactory();
         CredentialsFacade facade = (CredentialsFacade) proxyFactory.create(CredentialsFacade.class, "http://ycetest.yeepay.com:30119/hermes-hessian/hessian/CredentialsFacade");
+//        CredentialsFacade facade = (CredentialsFacade) proxyFactory.create(CredentialsFacade.class, "http://hermes.docker.3g:30119/hermes-hessian/hessian/CredentialsFacade");
 
         for (int i = 0; i < 100; i++) {
             CredentialsAuthParam cap = new CredentialsAuthParam.CredentialsAuthParamBuilder()
                     .setSystemCode("employee-boss")
 //                    .setUserId("jipeng.yu@tcredit.com")
-                    .setUserId("jiahong.li")
-                    .setValidationCode("596821")
+                    .setUserId("qizheng.wen")
+                    .setValidationCode("066249")
                     .setIp("192.168.0.1")
                     .createCredentialsAuthParam();
             CredentialsValidateResultDTO rs = facade.validateCredentials(cap);

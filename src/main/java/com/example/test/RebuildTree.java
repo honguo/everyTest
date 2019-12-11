@@ -2,7 +2,7 @@ package com.example.test;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class RebuildTree {
 
     public static void main(String[] args) {
@@ -45,7 +45,7 @@ public class RebuildTree {
         return root;
     }
 }
-class TreeNode {
+class TreeNode1 {
     //数据域
     public int data;
     //左指针域
@@ -53,7 +53,7 @@ class TreeNode {
     //右指针域
     public TreeNode right;
     //构造带有参数的构造方法
-    public TreeNode(int data) {
+    public TreeNode1(int data) {
         this.data = data;
     }
 //重写toString方法
