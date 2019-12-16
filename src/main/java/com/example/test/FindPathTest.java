@@ -1,6 +1,9 @@
 package com.example.test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+
+import static java.util.stream.Collectors.toList;
 
 public class FindPathTest {
     private ArrayList<ArrayList<Integer>> result = new ArrayList<>();
@@ -23,9 +26,12 @@ public class FindPathTest {
 
 
     public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
+        if(root == null){
+            return result;
+        }
         ArrayList<Integer> n = new ArrayList<>();
         FindPath(root,target,n);
-        return result;
+        return (ArrayList<ArrayList<Integer>>) result.stream().sorted(Comparator.comparingInt(ArrayList::size)).collect(toList());
     }
 
     public void FindPath(TreeNode root, int target,ArrayList<Integer> list){
@@ -36,11 +42,18 @@ public class FindPathTest {
             }
         }else {
             list.add(root.val);
+            ArrayList<Integer> left = new  ArrayList<>();
+            ArrayList<Integer> right = new  ArrayList<>();
+            for (int i:list
+                 ) {
+                left.add(i);
+                right.add(i);
+            }
             if(root.left != null){
-                FindPath(root.left,target-root.val,list);
+                FindPath(root.left,target-root.val,left);
             }
             if(root.right != null){
-                FindPath(root.right,target-root.val,list);
+                FindPath(root.right,target-root.val,right);
             }
         }
     }
