@@ -391,8 +391,8 @@ public class TTTT {
             CredentialsAuthParam cap = new CredentialsAuthParam.CredentialsAuthParamBuilder()
                     .setSystemCode("employee-boss")
 //                    .setUserId("jipeng.yu@tcredit.com")
-                    .setUserId("qizheng.wen")
-                    .setValidationCode("066249")
+                    .setUserId("minglei.wen")
+                    .setValidationCode("143528")
                     .setIp("192.168.0.1")
                     .createCredentialsAuthParam();
             CredentialsValidateResultDTO rs = facade.validateCredentials(cap);
