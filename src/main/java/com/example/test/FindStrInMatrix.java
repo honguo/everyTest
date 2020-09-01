@@ -3,12 +3,14 @@ package com.example.test;
 public class FindStrInMatrix {
 
     public static void main(String[] args){
-
+        char[][] matrix={{'a','b','c','d'},{'e','f','g','h'},{'a','h','c','l'},{'r','b','t','d'}};
+        String str="ahfg";
+        System.out.println(hasStr(matrix,str));
     }
 
-    private final int[][] next = {{0,1},{0,-1},{-1,0},{1,0}};
+    private static final int[][] next = {{0,1},{0,-1},{-1,0},{1,0}};
 
-    public boolean hasStr(char[][] matrix,String str){
+    public static boolean hasStr(char[][] matrix,String str){
         if(matrix.length==0 ||str.length()>matrix.length*matrix[0].length){
             return false;
         }
@@ -21,10 +23,10 @@ public class FindStrInMatrix {
                     return true;
             }
         }
-        return true;
+        return false;
     }
 
-    private boolean backTracing(char[][] matrix,boolean[][] marked,int i,int j,String str,int pathAt){
+    private static boolean backTracing(char[][] matrix,boolean[][] marked,int i,int j,String str,int pathAt){
         if(pathAt==str.length()){
             return true;
         }
@@ -33,7 +35,13 @@ public class FindStrInMatrix {
         }
         marked[i][j]=true;
         for(int[] n:next){
-            if(backTracing(matrix,marked,i+n[0],j+n[1],str,++pathAt)){
+            if(i+n[0]<0){
+                continue;
+            }
+            if(j+n[1]<0){
+                continue;
+            }
+            if(backTracing(matrix,marked,i+n[0],j+n[1],str,pathAt+1)){
                 return true;
             }
         }
